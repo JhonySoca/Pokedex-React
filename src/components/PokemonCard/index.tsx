@@ -1,7 +1,7 @@
 
 import { usePokemon } from "../../hooks/usePokemon";
 import styles from "./styles.module.scss"
-import { background } from '../../utils/BackgroundsByType';
+import { background,PokeTypes } from '../../utils/BackgroundsByType';
 import { Link } from "react-router-dom";
 import { Loader } from "../Loader";
 
@@ -13,7 +13,7 @@ export const PokemonCard = ({url}:Props) => {
 
 const {pokemon} = usePokemon(url);
 
-const backgroundSelected=background[pokemon?.types[0]?.type?.name];
+const backgroundSelected = background[(pokemon?.types?.[0]?.type?.name as PokeTypes) || 'normal'];
 
 return (
   
